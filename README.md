@@ -32,6 +32,7 @@ Plus:
 * Instale as dependências.
 * Configure a instância com o .env
 * Rode a migração
+* Crie um usuário username='admin' pass='demodemo'
 
 ```
 git clone https://github.com/rg3915/dg-challenge.git
@@ -40,4 +41,23 @@ source .venv/bin/activate
 PS1="(`basename \"$VIRTUAL_ENV\"`):/\W$ " # opcional
 pip install -r requirements.txt
 cp contrib/env-sample .env
+./manage.py makemigrations core
+./manage.py migrate
+./manage.py createsuperuser --username='admin' --email=''
+make shell_customer
+make shell_dress
+make shell_order
 ```
+
+Você também pode usar o **Selenium** para preencher os formulários. Para isso você vai precisar de **duas abas do terminal**.
+
+* Em uma você roda a app na porta 8000
+* E na outra você roda os comandos a seguir:
+
+```
+make selenium_customer
+make selenium_dress
+```
+
+O **pedido** é feito manualmente a partir de http://localhost:8000/order/add/ .
+
