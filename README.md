@@ -1,7 +1,5 @@
 # dg-challenge
 
-Teste com Django
-
 
 ## Objetivo
 
