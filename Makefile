@@ -8,6 +8,9 @@ shell_customer:
 shell_dress:
 	python manage.py shell < dress/shell/shell_dress.py
 
+shell_order:
+	python manage.py shell < dress/shell/shell_order.py
+
 selenium_customer:
 	python dress/selenium/selenium_customer.py
 

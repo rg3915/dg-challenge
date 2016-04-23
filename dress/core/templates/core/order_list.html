@@ -30,7 +30,7 @@
         <th>#</th>
         <th>Cliente</th>
         <th>Vestido</th>
-        <th>Aluguel</th>
+        <th class="text-right">Aluguel</th>
       </tr>
     </thead>
     <tbody>
@@ -39,7 +39,7 @@
         <td><a href="{{ order.get_absolute_url }}">{{ order.id }}</a></td>
         <td>{{ order.customer }}</td>
         <td>{{ order.dress }}</td>
-        <td>{{ order.price }}</td>
+        <td class="text-right">R$ {{ order.price }}</td>
       </tr>
     {% endfor %}
     </tbody>
