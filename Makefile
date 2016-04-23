@@ -6,10 +6,10 @@ shell_customer:
 	python manage.py shell < shell/shell_customer.py
 
 selenium_customer:
-	python selenium/selenium_customer.py
+	python dress/selenium/selenium_customer.py
 
 selenium_dress:
-	python selenium/selenium_dress.py
+	python dress/selenium/selenium_dress.py
 
 createuser:
 	python manage.py createsuperuser --username='admin' --email=''
