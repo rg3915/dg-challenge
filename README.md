@@ -59,5 +59,5 @@ make selenium_customer
 make selenium_dress
 ```
 
-O **pedido** é feito manualmente a partir de http://localhost:8000/order/add/ .
+O **pedido** é feito manualmente a partir de [http://localhost:8000/order/add/](http://localhost:8000/order/add/) .
 
