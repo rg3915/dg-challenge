@@ -1,5 +1,6 @@
 from django.conf.urls import include, url
 from dress.core import views as c
+from dress.core import graphics as g
 
 customer_patterns = [
     url(r'^$', c.CustomerList.as_view(), name='customer_list'),
@@ -7,6 +8,7 @@ customer_patterns = [
     url(r'^(?P<pk>\d+)/$', c.customer_detail, name='customer_detail'),
     url(r'^(?P<pk>\d+)/edit/$', c.customer_update, name='customer_edit'),
     url(r'^(?P<pk>\d+)/delete/$', c.customer_delete, name='customer_delete'),
+    url(r'^customer_per_size_json/$', g.customer_per_size_json),
 ]
 
 dress_patterns = [

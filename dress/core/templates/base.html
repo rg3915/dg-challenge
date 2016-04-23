@@ -23,6 +23,9 @@
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+  <!-- Highcharts.js -->
+  <script src="{% static 'js/highcharts.js' %}"></script>
+
   <style type="text/css">
     body {
       padding-top: 50px;
@@ -36,6 +39,7 @@
   <div id="wrap">
     <div class="container">
       {% block content %}{% endblock content %}
+      {% block js %}{% endblock js %}
     </div>
   </div>
   {% include "footer.html" %}

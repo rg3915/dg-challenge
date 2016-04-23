@@ -1,12 +1,30 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
   <div class="jumbotron">
-    <h1>Bem vinda!</h1>
     <a href="{% url 'core:customer_add' %}">
       <button id="new_customer" type="button" class="btn btn-primary">
         <span class="glyphicon glyphicon-plus"></span> Cadastre-se
       </button>
     </a>
   </div>
+
+  <div>
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading lead">
+          Quantidade de clientes por tamanho
+        </div>
+        <div class="panel-body">
+          <div id="person_size_chart" class="graph"></div>
+       </div>
+      </div>
+    </div>
+  </div>
 {% endblock content %}
+
+{% block js %}
+  <script src="{% static 'js/graphics/person_size_chart.js' %}"></script>
+{% endblock js %}
