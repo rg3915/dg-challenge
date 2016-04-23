@@ -9,6 +9,11 @@
         <span class="glyphicon glyphicon-plus"></span> Cadastre-se
       </button>
     </a>
+    <a href="{% url 'core:order_add' %}">
+      <button id="new_order" type="button" class="btn btn-info">
+        <span class="glyphicon glyphicon-plus"></span> Faça seu pedido
+      </button>
+    </a>
   </div>
 
   <div>
@@ -23,8 +28,22 @@
       </div>
     </div>
   </div>
+
+  <div>
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading lead">
+          Quantidade de vestidos por cor
+        </div>
+        <div class="panel-body">
+          <div id="dress_color_chart" class="graph"></div>
+       </div>
+      </div>
+    </div>
+  </div>
 {% endblock content %}
 
 {% block js %}
   <script src="{% static 'js/graphics/person_size_chart.js' %}"></script>
+  <script src="{% static 'js/graphics/dress_color_chart.js' %}"></script>
 {% endblock js %}

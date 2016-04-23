@@ -13,7 +13,7 @@ def customer_per_size_json(request):
         .annotate(quant=Count('person_size'))\
         .order_by('person_size').values('person_size', 'quant')
     '''
-    Precisa reescrever o dicionário com os campos do gráfico,
+    Precisa reescrever a lista com os campos do gráfico,
     que são: 'tamanho' e 'quant'.
     '''
     lista = [{'tamanho': i['person_size'], 'quant':i['quant']} for i in data]
@@ -24,7 +24,13 @@ def customer_per_size_json(request):
 
 def dress_per_color_json(request):
     ''' Quantidade de vestidos por cor '''
-    pass
+    data = Dress.objects.values('color')\
+        .annotate(quant=Count('color'))\
+        .order_by('color').values('color', 'quant')
+    ''' Reescrevendo a lista '''
+    lista = [{'cor': i['color'], 'quant':i['quant']} for i in data]
+    resp = json.dumps(lista, cls=DjangoJSONEncoder)
+    return HttpResponse(resp)
 
 
 def dress_per_size_json(request):

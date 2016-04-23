@@ -17,6 +17,7 @@ dress_patterns = [
     url(r'^(?P<pk>\d+)/$', c.dress_detail, name='dress_detail'),
     url(r'^(?P<pk>\d+)/edit/$', c.dress_update, name='dress_edit'),
     url(r'^(?P<pk>\d+)/delete/$', c.dress_delete, name='dress_delete'),
+    url(r'^dress_per_color_json/$', g.dress_per_color_json),
 ]
 
 order_patterns = [
