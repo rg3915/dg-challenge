@@ -18,6 +18,7 @@ dress_patterns = [
     url(r'^(?P<pk>\d+)/edit/$', c.dress_update, name='dress_edit'),
     url(r'^(?P<pk>\d+)/delete/$', c.dress_delete, name='dress_delete'),
     url(r'^dress_per_color_json/$', g.dress_per_color_json),
+    url(r'^dress_per_size_json/$', g.dress_per_size_json),
 ]
 
 order_patterns = [
@@ -26,6 +27,7 @@ order_patterns = [
     url(r'^(?P<pk>\d+)/$', c.order_detail, name='order_detail'),
     url(r'^(?P<pk>\d+)/edit/$', c.order_update, name='order_edit'),
     url(r'^(?P<pk>\d+)/delete/$', c.order_delete, name='order_delete'),
+    url(r'^order_per_day_json/$', g.order_per_day_json),
 ]
 
 urlpatterns = [

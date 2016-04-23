@@ -1,9 +1,10 @@
 import json
+import datetime
+import itertools
 from django.db.models import Count
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse, JsonResponse
 from .models import Customer, Dress, Order
-from dress.utils.lists import COLORS
 
 
 def customer_per_size_json(request):
@@ -35,9 +36,21 @@ def dress_per_color_json(request):
 
 def dress_per_size_json(request):
     ''' Quantidade de vestidos por tamanho '''
-    pass
+    data = Dress.objects.values('dress_size')\
+        .annotate(quant=Count('dress_size'))\
+        .order_by('dress_size').values('dress_size', 'quant')
+    ''' Reescrevendo a lista '''
+    lista = [{'tamanho': i['dress_size'], 'quant':i['quant']} for i in data]
+    resp = json.dumps(lista, cls=DjangoJSONEncoder)
+    return HttpResponse(resp)
 
 
 def order_per_day_json(request):
     ''' Quantidade de pedidos por dia '''
-    pass
+    qs = Order.objects.values('created').values('created')
+    grouped = itertools.groupby(
+        qs, lambda d: d.get('created').strftime('%Y-%m-%d'))
+    data = [{'dia': day, 'quant': len(list(this_day))}
+            for day, this_day in grouped]
+    resp = json.dumps(data, cls=DjangoJSONEncoder)
+    return HttpResponse(resp)
