@@ -28,6 +28,7 @@ order_patterns = [
     url(r'^(?P<pk>\d+)/edit/$', c.order_update, name='order_edit'),
     url(r'^(?P<pk>\d+)/delete/$', c.order_delete, name='order_delete'),
     url(r'^order_per_day_json/$', g.order_per_day_json),
+    url(r'^order_value_json/$', g.order_value_json),
 ]
 
 urlpatterns = [

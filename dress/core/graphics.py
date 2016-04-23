@@ -1,9 +1,8 @@
 import json
-import datetime
 import itertools
 from django.db.models import Count
 from django.core.serializers.json import DjangoJSONEncoder
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from .models import Customer, Dress, Order
 
 
@@ -53,4 +52,12 @@ def order_per_day_json(request):
     data = [{'dia': day, 'quant': len(list(this_day))}
             for day, this_day in grouped]
     resp = json.dumps(data, cls=DjangoJSONEncoder)
+    return HttpResponse(resp)
+
+
+def order_value_json(request):
+    ''' Valor de cada pedido '''
+    data = Order.objects.values('id', 'price')
+    lista = [{'id': i['id'], 'price': float(i['price'])} for i in data]
+    resp = json.dumps(lista, cls=DjangoJSONEncoder)
     return HttpResponse(resp)

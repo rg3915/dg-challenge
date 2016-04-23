@@ -14,6 +14,7 @@
         <span class="glyphicon glyphicon-plus"></span> Faça seu pedido
       </button>
     </a>
+    Veja os 5 gráficos abaixo.
   </div>
 
   <div>
@@ -24,19 +25,6 @@
         </div>
         <div class="panel-body">
           <div id="person_size_chart" class="graph"></div>
-       </div>
-      </div>
-    </div>
-  </div>
-
-  <div>
-    <div class="col-lg-6">
-      <div class="panel panel-default">
-        <div class="panel-heading lead">
-          Quantidade de vestidos por cor
-        </div>
-        <div class="panel-body">
-          <div id="dress_color_chart" class="graph"></div>
        </div>
       </div>
     </div>
@@ -59,6 +47,19 @@
     <div class="col-lg-6">
       <div class="panel panel-default">
         <div class="panel-heading lead">
+          Quantidade de vestidos por cor
+        </div>
+        <div class="panel-body">
+          <div id="dress_color_chart" class="graph"></div>
+       </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading lead">
           Quantidade de pedidos por dia
         </div>
         <div class="panel-body">
@@ -67,11 +68,25 @@
       </div>
     </div>
   </div>
+
+  <div>
+    <div>
+      <div class="panel panel-default">
+        <div class="panel-heading lead">
+          Valor de cada pedido
+        </div>
+        <div class="panel-body">
+          <div id="order_value_chart" class="graph"></div>
+       </div>
+      </div>
+    </div>
+  </div>
 {% endblock content %}
 
 {% block js %}
   <script src="{% static 'js/graphics/person_size_chart.js' %}"></script>
-  <script src="{% static 'js/graphics/dress_color_chart.js' %}"></script>
   <script src="{% static 'js/graphics/dress_size_chart.js' %}"></script>
+  <script src="{% static 'js/graphics/dress_color_chart.js' %}"></script>
   <script src="{% static 'js/graphics/order_per_day_chart.js' %}"></script>
+  <script src="{% static 'js/graphics/order_value_chart.js' %}"></script>
 {% endblock js %}

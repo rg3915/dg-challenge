@@ -1,5 +1,5 @@
 $(function () {
-    var url = "/dress/dress_per_color_json/";
+    var url = "/order/order_value_json/";
 
     $.getJSON(url, function(res){
         console.log(res);
@@ -7,14 +7,14 @@ $(function () {
            Com o comando map eu coloco uma lista dentro da outra,
            necessário para este tipo de gráfico. */
         var data = res.map(function (v) {
-            return [v.cor, v.quant]
+            return [v.id, v.price]
         });
 
         console.log(data);
 
-        $('#dress_color_chart').highcharts({
+        $('#order_value_chart').highcharts({
             chart: {
-                type: 'bar'
+                type: 'line'
             },
             title: {
                 text: ''
@@ -25,21 +25,24 @@ $(function () {
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Quantidade'
-                }
+                    text: 'Preço'
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                    }
+                },
             },
             legend: {
                 enabled: false
             },
-            // colors: ['#44AD41', '#DE2121'],
             series: [{
                 data: data,
-                colorByPoint: true,
                 dataLabels: {
                     enabled: true,
                     align: 'center',
-                    color: '#FFFFFF',
-                    x: -25, // 25 pixels down from the top
                     style: {
                         fontSize: '15px'
                     }
