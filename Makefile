@@ -17,6 +17,9 @@ selenium_customer:
 selenium_dress:
 	python dress/selenium/selenium_dress.py
 
+selenium_screenshot:
+	python dress/selenium/selenium_screenshot.py
+
 createuser:
 	python manage.py createsuperuser --username='admin' --email=''
 
