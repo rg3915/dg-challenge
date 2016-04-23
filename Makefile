@@ -3,7 +3,10 @@ migrate:
 	python manage.py migrate
 
 shell_customer:
-	python manage.py shell < shell/shell_customer.py
+	python manage.py shell < dress/shell/shell_customer.py
+
+shell_dress:
+	python manage.py shell < dress/shell/shell_dress.py
 
 selenium_customer:
 	python dress/selenium/selenium_customer.py
