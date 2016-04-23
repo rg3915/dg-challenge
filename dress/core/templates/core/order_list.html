@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Pedidos{% endblock title %}
+
+{% block content %}
+
+<form class="navbar-form navbar-right" action="." method="get">
+    <!-- add -->
+    <a href="{% url 'core:order_add' %}">
+        <button id="new" type="button" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span> Adicionar
+        </button>
+    </a>
+    <!-- search form -->
+    <div class="form-group">
+      <input id="search_box" name="search_box" type="text" placeholder="Localizar..." class="form-control">
+      <button type="submit" class="btn btn-success form-control"><span class="glyphicon glyphicon-search"></span></button>
+  </div>
+</form>
+
+<div class="page-header">
+<h2>Lista de Pedidos</h2>
+</div>
+
+<div>
+{% if order_list %}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Cliente</th>
+        <th>Vestido</th>
+        <th>Aluguel</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for order in order_list %}
+      <tr>
+        <td><a href="{{ order.get_absolute_url }}">{{ order.id }}</a></td>
+        <td>{{ order.customer }}</td>
+        <td>{{ order.dress }}</td>
+        <td>{{ order.price }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p class="alert alert-warning">Sem itens na lista.</p>
+{% endif %}
+</div>
+
+<hr>
+<div>
+<h4><b>Total:</b> {{ page_obj.paginator.count }} pedido{{ page_obj.paginator.count|pluralize }}</h4>
+</div>
+
+{% include "pagination.html" %}
+
+{% endblock content %}

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Dress Detail{% endblock title %}
+
+{% block content %}
+
+<ul class="breadcrumb">
+  <li><a href="{% url 'core:home' %}">Home</a> <span class="divider"></span></li>
+  <li><a href="{% url 'core:dress_list' %}">Vestidos</a> <span class="divider"></span></li>
+  <li class="active">{{ object.dress_model }}</li>
+</ul>
+
+<div class="col-lg-8">
+  <div class="col-md-2 column">
+    <img src="https://cdn2.iconfinder.com/data/icons/clothing-and-accessories-1/80/clothing_accesories_clothes_fabric-05-128.png" class="img-square" style="height: 100px;" />
+  </div>
+  <div class="col-md-offset-3 column">
+    <h1>{{ object.dress_model }}</h1>
+    <h4>{{ object.stylist }}</h4>
+  </div>
+
+  </br>
+
+  <table class="table table-user-information">
+    <tbody>
+      <tr>
+        <th class="col-md-3 text-right">Cor</th>
+        <td>{{ object.color }}</td>
+      </tr>
+      <tr>
+        <th class="col-md-3 text-right">Altura</th>
+          <td>{{ object.dress_height }}</td>
+      </tr>
+      <tr>
+        <th class="col-md-3 text-right">Tamanho</th>
+          <td>{{ object.dress_size }}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  <!-- edit -->
+  <a href="{% url 'core:dress_edit' dress.pk %}">
+      <button id="edit_dress" type="button" class="btn btn-success">
+          <span class="fa fa-pencil"></span> Editar
+      </button>
+  </a>
+  <!-- delete with modal -->
+  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+      <span class="fa fa-times"></span> Excluir
+  </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Confirmar</h4>
+      </div>
+        <form action="{% url 'core:dress_delete' dress.id %}" method="POST">
+      <div class="modal-body">
+          {% csrf_token %}
+          Deseja mesmo deletar "{{ object }}"?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        <input type="submit" class="btn btn-danger" value="Deletar" />
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}

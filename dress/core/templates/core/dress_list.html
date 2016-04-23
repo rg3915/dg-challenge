@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Vestidos{% endblock title %}
+
+{% block content %}
+
+<form class="navbar-form navbar-right" action="." method="get">
+    <!-- add -->
+    <a href="{% url 'core:dress_add' %}">
+        <button id="new" type="button" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span> Adicionar
+        </button>
+    </a>
+    <!-- search form -->
+    <div class="form-group">
+      <input id="search_box" name="search_box" type="text" placeholder="Localizar..." class="form-control">
+      <button type="submit" class="btn btn-success form-control"><span class="glyphicon glyphicon-search"></span></button>
+  </div>
+</form>
+
+<div class="page-header">
+<h2>Lista de Vestidos</h2>
+</div>
+
+<div>
+{% if dress_list %}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Modelo</th>
+        <th>Estilista</th>
+        <th>Cor</th>
+        <th>Altura</th>
+        <th>Tamanho</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for dress in dress_list %}
+      <tr>
+        <td><a href="{{ dress.get_absolute_url }}">{{ dress.dress_model }}</a></td>
+        <td>{{ dress.stylist }}</td>
+        <td>{{ dress.color }}</td>
+        <td>{{ dress.dress_height }}</td>
+        <td>{{ dress.dress_size }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p class="alert alert-warning">Sem itens na lista.</p>
+{% endif %}
+</div>
+
+<hr>
+<div>
+<h4><b>Total:</b> {{ page_obj.paginator.count }} vestido{{ page_obj.paginator.count|pluralize }}</h4>
+</div>
+
+{% include "pagination.html" %}
+
+{% endblock content %}

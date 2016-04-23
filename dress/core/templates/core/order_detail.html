@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Order Detail{% endblock title %}
+
+{% block content %}
+
+<ul class="breadcrumb">
+  <li><a href="{% url 'core:home' %}">Home</a> <span class="divider"></span></li>
+  <li><a href="{% url 'core:order_list' %}">Pedidos</a> <span class="divider"></span></li>
+  <li class="active">{{ object.id }}</li>
+</ul>
+
+<div class="col-lg-8">
+
+  <table class="table table-user-information">
+    <tbody>
+      <tr>
+        <th class="col-md-3 text-right">Pedido</th>
+        <td>{{ object.id }}</td>
+      </tr>
+      <tr>
+        <th class="col-md-3 text-right">Cliente</th>
+        <td>{{ object.customer }}</td>
+      </tr>
+      <tr>
+        <th class="col-md-3 text-right">Vestido</th>
+          <td>{{ object.dress }}</td>
+      </tr>
+      <tr>
+        <th class="col-md-3 text-right">Aluguel</th>
+          <td>{{ object.price }}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  <!-- edit -->
+  <a href="{% url 'core:order_edit' order.pk %}">
+      <button id="edit_order" type="button" class="btn btn-success">
+          <span class="fa fa-pencil"></span> Editar
+      </button>
+  </a>
+  <!-- delete with modal -->
+  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+      <span class="fa fa-times"></span> Excluir
+  </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Confirmar</h4>
+      </div>
+        <form action="{% url 'core:order_delete' order.id %}" method="POST">
+      <div class="modal-body">
+          {% csrf_token %}
+          Deseja mesmo deletar "{{ object }}"?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        <input type="submit" class="btn btn-danger" value="Deletar" />
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}
