@@ -70,4 +70,4 @@ __pycache__/
 staticfiles/
 .ipynb_checkpoints/
 
-/core/migrations/
+dress/core/migrations/
