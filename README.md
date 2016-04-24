@@ -33,6 +33,7 @@ Plus:
 * Configure a instância com o .env
 * Rode a migração
 * Crie um usuário username='admin' pass='demodemo'
+* Execute os comandos shell a seguir. Eles inserem uma quantidade aleatória de registros variando entre 1 e 20.
 
 ```
 git clone https://github.com/rg3915/dg-challenge.git

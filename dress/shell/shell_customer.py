@@ -13,7 +13,7 @@ with open('fix/address.csv', 'r') as f:
         address_list.append(dct)
     f.close()
 
-REPEAT = random.randint(1, 10)
+REPEAT = random.randint(1, 20)
 
 ''' Insert Customers '''
 for i in range(REPEAT):

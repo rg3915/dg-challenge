@@ -14,7 +14,7 @@ with open('fix/dress.csv', 'r') as f:
     f.close()
 
 
-REPEAT = random.randint(1, 10)
+REPEAT = random.randint(1, 20)
 
 ''' Insert Dress '''
 for i in range(REPEAT):

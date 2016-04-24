@@ -1,7 +1,7 @@
 import random
 from dress.core.models import Customer, Dress, Order
 
-REPEAT = random.randint(1, 10)
+REPEAT = random.randint(1, 20)
 customer = Customer.objects.all()
 dress = Dress.objects.all()
 
