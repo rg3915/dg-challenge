@@ -2,9 +2,11 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse_lazy as r
 from django.views.generic import CreateView, ListView, DetailView
 from django.views.generic import UpdateView, DeleteView
+from rest_framework import viewsets
 from .mixins import NameSearchMixin, DressSearchMixin, OrderSearchMixin
 from .models import Customer, Dress, Order
 from .forms import CustomerForm, DressForm, OrderForm
+from .serializers import CustomerSerializer, DressSerializer, OrderSerializer
 
 
 def home(request):
@@ -54,3 +56,21 @@ order_update = UpdateView.as_view(model=Order, form_class=OrderForm)
 
 order_delete = DeleteView.as_view(
     model=Order, success_url=r('core:order_list'))
+
+
+class CustomerViewSet(viewsets.ModelViewSet):
+    ''' API endpoint that allows customers to be viewed or edited. '''
+    queryset = Customer.objects.all().order_by('first_name')
+    serializer_class = CustomerSerializer
+
+
+class DressViewSet(viewsets.ModelViewSet):
+    ''' API endpoint that allows dress to be viewed or edited. '''
+    queryset = Dress.objects.all().order_by('dress_model')
+    serializer_class = DressSerializer
+
+
+class OrderViewSet(viewsets.ModelViewSet):
+    ''' API endpoint that allows orders to be viewed or edited. '''
+    queryset = Order.objects.all().order_by('-created')
+    serializer_class = OrderSerializer

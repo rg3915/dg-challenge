@@ -63,6 +63,26 @@ make selenium_dress
 
 O **pedido** é feito manualmente a partir de [http://localhost:8000/order/add/](http://localhost:8000/order/add/) .
 
+
+
+## Api Rest
+
+A partir do post [Django Rest Framework Quickstart](http://pythonclub.com.br/django-rest-framework-quickstart.html) eu fiz a primeira parte da Api Rest.
+
+Neste exemplo também você vai precisar de **duas abas do terminal**.
+
+* Em uma você roda a app na porta 8000
+* E na outra você roda os comandos a seguir (usando [httpie](https://github.com/jkbrzt/httpie#installation)):
+
+Considere: username='admin' pass='demodemo'.
+
+```
+http -a admin:demodemo http://127.0.0.1:8000/customers/
+http -a admin:demodemo http://127.0.0.1:8000/customers/1/
+http -a admin:demodemo http://127.0.0.1:8000/dresses/1/
+http -a admin:demodemo http://127.0.0.1:8000/orders/1/
+```
+
 ## Screenshot
 
 ![img](img/graphics.png)
