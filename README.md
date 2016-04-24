@@ -36,6 +36,7 @@ Plus:
 
 ```
 git clone https://github.com/rg3915/dg-challenge.git
+cd dg-challenge
 python -m venv .venv
 source .venv/bin/activate
 PS1="(`basename \"$VIRTUAL_ENV\"`):/\W$ " # opcional

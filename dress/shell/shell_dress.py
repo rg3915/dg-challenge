@@ -1,8 +1,7 @@
 import random
 import csv
 from dress.core.models import Dress
-from dress.selenium.gen_names import gen_female_first_name, \
-    gen_male_first_name, gen_last_name
+from dress.selenium.gen_names import gen_female_first_name, gen_male_first_name, gen_last_name
 from dress.selenium.gen_random_values import gen_number, gen_height
 
 dress_list = []
