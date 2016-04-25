@@ -9,7 +9,7 @@ router.register(r'dresses', views.DressViewSet)
 router.register(r'orders', views.OrderViewSet)
 
 urlpatterns = [
-    url(r'^', include(router.urls)),
+    url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'', include('dress.core.urls', namespace='core')),
     url(r'^admin/', admin.site.urls),

@@ -25,7 +25,6 @@ class DressDetailGet(TestCase):
         contents = (self.obj.dress_model,
                     self.obj.stylist,
                     self.obj.color,
-                    self.obj.dress_height,
                     self.obj.dress_size,
                     )
 

@@ -62,15 +62,21 @@ class CustomerViewSet(viewsets.ModelViewSet):
     ''' API endpoint that allows customers to be viewed or edited. '''
     queryset = Customer.objects.all().order_by('first_name')
     serializer_class = CustomerSerializer
+    authentication_classes = []
+    permission_classes = []
 
 
 class DressViewSet(viewsets.ModelViewSet):
     ''' API endpoint that allows dress to be viewed or edited. '''
     queryset = Dress.objects.all().order_by('dress_model')
     serializer_class = DressSerializer
+    authentication_classes = []
+    permission_classes = []
 
 
 class OrderViewSet(viewsets.ModelViewSet):
     ''' API endpoint that allows orders to be viewed or edited. '''
     queryset = Order.objects.all().order_by('-created')
     serializer_class = OrderSerializer
+    authentication_classes = []
+    permission_classes = []

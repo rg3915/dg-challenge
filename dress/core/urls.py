@@ -2,7 +2,7 @@ from django.conf.urls import include, url
 from dress.core import views as c
 from dress.core import graphics as g
 
-customer_patterns = [
+customers_patterns = [
     url(r'^$', c.CustomerList.as_view(), name='customer_list'),
     url(r'^add/$', c.customer_create, name='customer_add'),
     url(r'^(?P<pk>\d+)/$', c.customer_detail, name='customer_detail'),
@@ -11,7 +11,7 @@ customer_patterns = [
     url(r'^customer_per_size_json/$', g.customer_per_size_json),
 ]
 
-dress_patterns = [
+dresses_patterns = [
     url(r'^$', c.DressList.as_view(), name='dress_list'),
     url(r'^add/$', c.dress_create, name='dress_add'),
     url(r'^(?P<pk>\d+)/$', c.dress_detail, name='dress_detail'),
@@ -21,7 +21,7 @@ dress_patterns = [
     url(r'^dress_per_size_json/$', g.dress_per_size_json),
 ]
 
-order_patterns = [
+orders_patterns = [
     url(r'^$', c.OrderList.as_view(), name='order_list'),
     url(r'^add/$', c.order_create, name='order_add'),
     url(r'^(?P<pk>\d+)/$', c.order_detail, name='order_detail'),
@@ -33,7 +33,7 @@ order_patterns = [
 
 urlpatterns = [
     url(r'^$', c.home, name='home'),
-    url(r'^customer/', include(customer_patterns)),
-    url(r'^dress/', include(dress_patterns)),
-    url(r'^order/', include(order_patterns)),
+    url(r'^customers/', include(customers_patterns)),
+    url(r'^dresses/', include(dresses_patterns)),
+    url(r'^orders/', include(orders_patterns)),
 ]

@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Customer, Dress, Order
 
 
-class CustomerSerializer(serializers.HyperlinkedModelSerializer):
+class CustomerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Customer
@@ -12,7 +12,7 @@ class CustomerSerializer(serializers.HyperlinkedModelSerializer):
                   'person_size')
 
 
-class DressSerializer(serializers.HyperlinkedModelSerializer):
+class DressSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Dress
@@ -20,7 +20,7 @@ class DressSerializer(serializers.HyperlinkedModelSerializer):
                   'dress_height', 'dress_size')
 
 
-class OrderSerializer(serializers.HyperlinkedModelSerializer):
+class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
