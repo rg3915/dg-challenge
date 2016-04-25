@@ -33,7 +33,6 @@ Plus:
 * Configure a instância com o .env
 * Rode a migração
 * Crie um usuário username='admin' pass='demodemo'
-* Execute os comandos shell a seguir. Eles inserem uma quantidade aleatória de registros variando entre 1 e 20.
 
 ```
 git clone https://github.com/rg3915/dg-challenge.git
@@ -46,10 +45,25 @@ cp contrib/env-sample .env
 ./manage.py makemigrations core
 ./manage.py migrate
 ./manage.py createsuperuser --username='admin' --email=''
+```
+
+## Testes
+
+```
+./manage.py test
+```
+
+## Shell do Django
+
+Execute os comandos shell a seguir. Eles inserem uma quantidade aleatória de registros variando entre 1 e 20.
+
+```
 make shell_customer
 make shell_dress
 make shell_order
 ```
+
+## Selenium
 
 Você também pode usar o **Selenium** para preencher os formulários. Para isso você vai precisar de **duas abas do terminal**.
 
@@ -61,28 +75,60 @@ make selenium_customer
 make selenium_dress
 ```
 
-O **pedido** é feito manualmente a partir de [http://localhost:8000/order/add/](http://localhost:8000/order/add/) .
+O **pedido** é feito manualmente a partir de [http://localhost:8000/order/add/][0] .
 
 
 
 ## Api Rest
 
-A partir do post [Django Rest Framework Quickstart](http://pythonclub.com.br/django-rest-framework-quickstart.html) eu fiz a primeira parte da Api Rest.
+A partir do post [Django Rest Framework Quickstart][1] e [Django Rest Framework Serialization][2] eu fiz a Api Rest.
 
 Neste exemplo também você vai precisar de **duas abas do terminal**.
 
 * Em uma você roda a app na porta 8000
-* E na outra você roda os comandos a seguir (usando [httpie](https://github.com/jkbrzt/httpie#installation)):
+* E na outra você roda os comandos a seguir (usando [httpie][3]):
 
-Considere: username='admin' pass='demodemo'.
+**Obs:** para os exemplos a seguir considere que já exista um cliente e um vestido cadastrados. Os exemplos referem-se apenas aos **pedidos**.
 
 ```
-http -a admin:demodemo http://127.0.0.1:8000/customers/
-http -a admin:demodemo http://127.0.0.1:8000/customers/1/
-http -a admin:demodemo http://127.0.0.1:8000/dresses/1/
-http -a admin:demodemo http://127.0.0.1:8000/orders/1/
+http http://127.0.0.1:8000/api/customers/
+http http://127.0.0.1:8000/api/customers/1/
+http http://127.0.0.1:8000/api/dresses/1/
+http http://127.0.0.1:8000/api/orders/1/
+
+# Create
+http POST http://127.0.0.1:8000/api/orders/ customer=1 dress=1 price=450.99
+
+# Update
+http PUT http://127.0.0.1:8000/api/orders/1/ customer=1 dress=2 price=999.99
+
+# Delete
+http DELETE http://127.0.0.1:8000/api/orders/1/
 ```
+
+Também podemos usar o [cURL][4].
+
+```
+curl http://127.0.0.1:8000/api/orders/1/
+
+# Create
+curl -X POST http://127.0.0.1:8000/api/orders/ -H 'Content-Type: application/json' -d '{"customer": 1, "dress": 1, "price": "900.05"}'
+
+# Update
+curl -X PUT http://127.0.0.1:8000/api/orders/1/ -H 'Content-Type: application/json' -d '{"customer": 1, "dress": 2, "price": "854.92"}'
+
+# Delete
+curl -X DELETE http://127.0.0.1:8000/api/orders/1/
+```
+
+
 
 ## Screenshot
 
 ![img](img/graphics.png)
+
+[0]: http://localhost:8000/order/add/
+[1]: http://pythonclub.com.br/django-rest-framework-quickstart.html
+[2]: http://pythonclub.com.br/django-rest-framework-serialization.html
+[3]: https://github.com/jkbrzt/httpie#installation
+[4]: http://www.diego-garcia.info/2014/12/13/use-o-curl/
