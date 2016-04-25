@@ -1,5 +1,5 @@
 $(function () {
-    var url = "/dress/dress_per_size_json/";
+    var url = "/dresses/dress_per_size_json/";
 
     $.getJSON(url, function(res){
         console.log(res);

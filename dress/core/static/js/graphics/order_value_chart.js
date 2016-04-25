@@ -1,5 +1,5 @@
 $(function () {
-    var url = "/order/order_value_json/";
+    var url = "/orders/order_value_json/";
 
     $.getJSON(url, function(res){
         console.log(res);

@@ -24,6 +24,12 @@ Plus:
 * Gostamos de Python e Django
 
 
+## Versão
+
+* Python 3.5
+* Django==1.9.5
+
+
 ## Instalação
 
 * Clone o repositório.
