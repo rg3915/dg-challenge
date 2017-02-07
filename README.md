@@ -133,6 +133,8 @@ curl -X DELETE http://127.0.0.1:8000/api/orders/1/
 
 ![img](img/graphics.png)
 
+*Dress and Go*
+
 [0]: http://localhost:8000/order/add/
 [1]: http://pythonclub.com.br/django-rest-framework-quickstart.html
 [2]: http://pythonclub.com.br/django-rest-framework-serialization.html
